@@ -12,20 +12,23 @@
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
-        //store all the nodes of one linkedlist into set
-        HashSet<ListNode> set = new HashSet<>();
-        while(headA != null){
-            set.add(headA);
-            headA = headA.next;
-        }
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+           ListNode p1 = headA;
+           ListNode p2 = headB;
 
-        //compare if there is same node from the other linkedlist and the set
-        while(headB != null){
-            if(set.contains(headB))
-                return headB;
-            headB = headB.next;
-        }
-        //didn't find same node
-        return null;
-    }
+           while(p1 != p2){
+               if(p1 != null)
+                   p1 = p1.next;
+               else
+                   p1 = headB;
+               if(p2 != null)
+                   p2 = p2.next;
+               else
+                   p2 = headA;
+           }
+
+           return p1;
+
+       }
+   }
 }
